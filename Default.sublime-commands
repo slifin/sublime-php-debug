@@ -1,10 +1,10 @@
 [
     {
-      "caption": "Start Xdebug Connection",
-      "command": "php_debug"
+      "caption": "Start listening for Xdebug connection",
+      "command": "start_listen"
     },
     {
-      "caption": "Stop Xdebug Connection",
-      "command": "php_debug"
+      "caption": "Stop listening for Xdebug connection",
+      "command": "stop_listen"
     }
 ]

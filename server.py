@@ -2,13 +2,21 @@ import sublime
 import socket
 import threading
 
-def listen_event(evt = None):
-  listen_event.event = getattr(listen_event, "event", evt)
-  return listen_event.event
+def listen_event(event = None):
+
+  if (event is not None):
+    listen_event.event = event
+
+  return event or getattr(listen_event, "event", None)
+
+def is_listening():
+  event = listen_event()
+  return event is not None and not event.is_set()
+
 
 def start():
   evt = listen_event(threading.Event())
-  sublime.message_dialog(str(evt))
+
   threading.Thread(
     target=create_socket,
     args=(evt,)

@@ -1,16 +1,16 @@
 import sublime
 import socket
 import threading
-from .thread_event import start as thread_start, stop as thread_stop
+from .thread_event import start as event_start, stop as event_stop
 
 def start():
   threading.Thread(
     target=create_socket,
-    args=(thread_start(),)
+    args=(event_start(),)
   ).start()
 
 def stop():
-  thread_stop()
+  event_stop()
 
 def create_socket(event):
   sublime.message_dialog(str(event))

@@ -9,13 +9,11 @@ def thread_event(event = None):
 
 def is_listening(event = None):
   event = event or thread_event()
-  return event is not None and not event.is_set()
-
+  listening = event is not None and not event.is_set()
+  return listening
 
 def start():
-  return thread_event(threading.Event())
+  thread_event(threading.Event())
 
 def stop():
-  event = thread_event()
-  event.set()
-  return event
+  thread_event().set()
